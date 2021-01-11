@@ -1,0 +1,8 @@
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\bin\Release\FileRenamer.dll
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\bin\Release\FileRenamer.pdb
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\obj\Release\FileRenamer.RenameForm.resources
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\obj\Release\FileRenamer.csproj.GenerateResource.cache
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\obj\Release\FileRenamer.csproj.CoreCompileInputs.cache
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\obj\Release\FileRenamer.dll
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\obj\Release\FileRenamer.pdb
+C:\Users\robinsona\source\repos\FileRenamer\FileRenamer\obj\Release\FileRenamer.csprojAssemblyReference.cache
