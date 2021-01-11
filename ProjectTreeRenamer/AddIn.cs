@@ -23,7 +23,7 @@ namespace ProjectTreeRenamer
         private string _Replace;
         private readonly string _traceFilePath;
 
-        public AddIn(TiaPortal tiaPortal) : base("File Renamer")
+        public AddIn(TiaPortal tiaPortal) : base("ProjectTree Renamer")
         {
             _tiaPortal = tiaPortal;
             _settings = Settings.Load();
@@ -105,7 +105,6 @@ namespace ProjectTreeRenamer
                                     blockGroup.Rename(_Find, _Replace);
                                 }
                             }
-
                         }
                         using (Form owner = Util.GetForegroundWindow())
                         {

@@ -6,3 +6,11 @@ C:\Users\robinsona\source\repos\ProjectTreeRenamer\ProjectTreeRenamer\obj\Debug\
 C:\Users\robinsona\source\repos\ProjectTreeRenamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.csproj.CoreCompileInputs.cache
 C:\Users\robinsona\source\repos\ProjectTreeRenamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.dll
 C:\Users\robinsona\source\repos\ProjectTreeRenamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.pdb
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Debug\ProjectTreeRenamer.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Debug\ProjectTreeRenamer.pdb
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.csprojAssemblyReference.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.RenameForm.resources
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.csproj.GenerateResource.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.csproj.CoreCompileInputs.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Debug\ProjectTreeRenamer.pdb
