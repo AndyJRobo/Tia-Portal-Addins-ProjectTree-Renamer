@@ -1,15 +1,11 @@
 ﻿using Siemens.Engineering.HW;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectTreeRenamer.Utility
 {
     public class UDeviceGroup
     {
-        DeviceUserGroup _deviceUserGroup;
+        private DeviceUserGroup _deviceUserGroup;
         public List<Device> Devices { get; private set; }
         public List<UDeviceGroup> Groups { get; private set; }
 

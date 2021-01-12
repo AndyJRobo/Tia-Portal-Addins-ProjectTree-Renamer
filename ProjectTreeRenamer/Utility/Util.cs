@@ -3,8 +3,8 @@ using Siemens.Engineering.SW.Blocks;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ProjectTreeRenamer.Utility
 {
@@ -20,7 +20,6 @@ namespace ProjectTreeRenamer.Utility
         {
             try
             {
-                Trace.TraceInformation("Path :" + filePath);
                 if (File.Exists(filePath))
                 {
                     File.Delete(filePath);
@@ -29,7 +28,7 @@ namespace ProjectTreeRenamer.Utility
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Exception during export:" + Environment.NewLine + ex);
+                Trace.TraceError("Exception during export:" + Environment.NewLine + ex + Environment.NewLine + "Block Name: " + block.Name + Environment.NewLine + " Path: " + filePath);
                 return false;
             }
             return true;

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProjectTreeRenamer.Utility;
 using Siemens.Engineering;
 using Siemens.Engineering.AddIn.Menu;
-using System.Linq;
-using System.Windows.Forms;
 using Siemens.Engineering.HW;
 using Siemens.Engineering.SW.Blocks;
-using System.IO;
-using System.Reflection;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using ProjectTreeRenamer.Utility;
-using Siemens.Engineering.HW.Features;
-using Siemens.Engineering.SW;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace ProjectTreeRenamer
 {
@@ -35,6 +33,7 @@ namespace ProjectTreeRenamer
             var logDirectory = Directory.CreateDirectory(logDirectoryPath);
             _traceFilePath = Path.Combine(logDirectory.FullName, string.Concat(DateTime.Now.ToString("yyyyMMdd_HHmmss"), ".txt"));
         }
+
         protected override void BuildContextMenuItems(ContextMenuAddInRoot addInRootSubmenu)
         {
             addInRootSubmenu.Items.AddActionItem<PlcBlockUserGroup>("RenameAll", RenameAllSelectedPlcBlockGroups);
@@ -54,8 +53,8 @@ namespace ProjectTreeRenamer
                 using (Form owner = Util.GetForegroundWindow())
                 {
                     DialogResult result = ShowMyDialogBox(owner);
-                    if (result == DialogResult.OK)                    
-                        replaceClicked = true;                    
+                    if (result == DialogResult.OK)
+                        replaceClicked = true;
                 }
 
                 if (replaceClicked & !_Find.Equals(_Replace))
@@ -71,7 +70,7 @@ namespace ProjectTreeRenamer
                         bool TransactionSuccess = false;
                         string path = Path.Combine(Environment.ExpandEnvironmentVariables("%TEMP%"), AppDomain.CurrentDomain.FriendlyName, myUniqueFolderName);
                         Directory.CreateDirectory(path);
-                        List<BlockGroup> blockGroups = new List<BlockGroup>();                        
+                        List<BlockGroup> blockGroups = new List<BlockGroup>();
 
                         using (var transaction = exclusiveAccess.Transaction(project, "Renaming folder and contents from: " + _Find + " to: " + _Replace))
                         {
@@ -84,7 +83,7 @@ namespace ProjectTreeRenamer
                             }
                             catch (Exception ex)
                             {
-                                Trace.TraceError("Exception during rename:" + Environment.NewLine + ex + Environment.NewLine+ ex.TargetSite);
+                                Trace.TraceError("Exception during rename:" + Environment.NewLine + ex + Environment.NewLine + ex.TargetSite);
                                 return;
                             }
                             if (transaction.CanCommit)
@@ -93,7 +92,7 @@ namespace ProjectTreeRenamer
                                 transaction.CommitOnDispose();
                             }
                         }
-                        if(TransactionSuccess)
+                        if (TransactionSuccess)
                         {
                             foreach (BlockGroup blockGroup in blockGroups)
                             {
@@ -110,7 +109,6 @@ namespace ProjectTreeRenamer
                         {
                             MessageBox.Show(owner, "Completed Renaming");
                         }
-
                     }
                     TimeSpan ts = stopWatch.Elapsed;
                     string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
@@ -121,13 +119,14 @@ namespace ProjectTreeRenamer
                 Trace.Close();
             }
             DeleteEmptyTraceFile();
-        } 
+        }
+
         private void RenameBlockGroup(BlockGroup blockGroup)
         {
             if (blockGroup.IsChangeable)
             {
                 Trace.TraceInformation("Exporting: " + blockGroup.Name + System.Environment.NewLine);
-                blockGroup.RenameAll(_Find, _Replace);               
+                blockGroup.RenameAll(_Find, _Replace);
             }
             else
             {
@@ -138,7 +137,8 @@ namespace ProjectTreeRenamer
                 }
                 Trace.TraceInformation(diagnostics);
             }
-        }       
+        }
+
         private void RenameAllSelectedPlcBlocks(MenuSelectionProvider menuSelectionProvider)
         {
             IEnumerable<object> menuSelction = menuSelectionProvider.GetSelection();
@@ -180,6 +180,7 @@ namespace ProjectTreeRenamer
             }
             DeleteEmptyTraceFile();
         }
+
         private void RenameAllSelectedDeviceGroups(MenuSelectionProvider menuSelectionProvider)
         {
             IEnumerable<object> menuSelction = menuSelectionProvider.GetSelection();
@@ -195,8 +196,8 @@ namespace ProjectTreeRenamer
                         bool replaceClicked = false;
                         using (Form owner = Util.GetForegroundWindow())
                         {
-                            if (ShowMyDialogBox(owner) == DialogResult.OK)                            
-                                replaceClicked = true;                            
+                            if (ShowMyDialogBox(owner) == DialogResult.OK)
+                                replaceClicked = true;
                         }
                         if (replaceClicked & !_Find.Equals(_Replace))
                         {
@@ -264,7 +265,7 @@ namespace ProjectTreeRenamer
                 Trace.Close();
             }
             DeleteEmptyTraceFile();
-        }        
+        }
 
         private static IEnumerable<DeviceUserGroup> EnumerateDeviceUserGroup(DeviceUserGroup deviceUserGroup)
         {
@@ -278,6 +279,7 @@ namespace ProjectTreeRenamer
                 }
             }
         }
+
         public DialogResult ShowMyDialogBox(Form owner)
         {
             DialogResult result = DialogResult.None;
@@ -290,7 +292,7 @@ namespace ProjectTreeRenamer
                 _Find = testDialog.textBox_Find.Text;
                 _Replace = testDialog.textBox_Replace.Text;
                 result = DialogResult.OK;
-            }            
+            }
             testDialog.Dispose();
             return result;
         }
@@ -309,21 +311,5 @@ namespace ProjectTreeRenamer
                 // Silently ignore file operations
             }
         }
-//        foreach (DeviceUserGroup deviceFolder in menuSelction)
-//                            {
-//                                List<DeviceUserGroup> deviceGroups = EnumerateDeviceUserGroup(deviceFolder).ToList();
-//                                foreach (DeviceUserGroup deviceUserGroup in deviceGroups)
-//                                {
-//                                    deviceUserGroup.Name = deviceUserGroup.Name.Replace(_Find, _Replace);
-//                                    foreach (Device device in deviceUserGroup.Devices)
-//                                    {
-//                                        device.Name = device.Name.Replace(_Find, _Replace);
-//                                        foreach (DeviceItem deviceItem in device.DeviceItems)
-//                                        {
-//                                            deviceItem.Name = deviceItem.Name.Replace(_Find, _Replace);
-//                                        }
-//                                     }
-//                                }
-//                            }  
     }
 }

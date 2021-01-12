@@ -34,13 +34,13 @@
   <!--Please remove unused permissions-->
   <RequiredPermissions>
     <TIAPermissions>
-      <TIA.ReadWrite/>
+      <TIA.ReadWrite />
     </TIAPermissions>
     <SecurityPermissions>
-      <System.Security.Permissions.FileIOPermission/>
-      <System.Security.Permissions.EnvironmentPermission/>
-      <System.Security.Permissions.UIPermission/>
-      <System.Security.Permissions.SecurityPermission.UnmanagedCode/>
+      <System.Security.Permissions.FileIOPermission />
+      <System.Security.Permissions.EnvironmentPermission />
+      <System.Security.Permissions.UIPermission />
+      <System.Security.Permissions.SecurityPermission.UnmanagedCode />
     </SecurityPermissions>
   </RequiredPermissions>
 </PackageConfiguration>

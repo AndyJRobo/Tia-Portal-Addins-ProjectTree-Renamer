@@ -1,4 +1,4 @@
-C:\Program Files\Siemens\Automation\Portal V16\PublicAPI\V16.AddIn\Siemens.Engineering.AddIn.Publisher.exe --> 11/01/2021 3:16:06 AM UTC
+C:\Program Files\Siemens\Automation\Portal V16\PublicAPI\V16.AddIn\Siemens.Engineering.AddIn.Publisher.exe --> 12/01/2021 1:22:59 AM UTC
 
 Calling Arguments:
 --configuration              :C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\Config.xml
@@ -19,4 +19,4 @@ Packaging Permission 'System.Security.Permissions.UIPermission'.
 Packaging Permission 'System.Security.Permissions.SecurityPermission.UnmanagedCode'.
 Packaging Permission 'TIA.ReadWrite'.
 
- --> S U C C E E D E D <-- (0.096s)
+ --> S U C C E E D E D <-- (0.097s)

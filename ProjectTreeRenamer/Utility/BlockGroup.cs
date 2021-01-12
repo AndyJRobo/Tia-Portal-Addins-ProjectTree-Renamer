@@ -1,6 +1,5 @@
 ﻿using Siemens.Engineering.Compiler;
 using Siemens.Engineering.SW.Blocks;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -15,12 +14,14 @@ namespace ProjectTreeRenamer.Utility
         private string _path;
         private string _exportDir;
         private string _exportPath;
-        
-        public string Name { get; private set; }       
+
+        public string Name { get; private set; }
+
         public bool IsChangeable
         {
             get { return _state == ExitState.IsChangeable; }
         }
+
         public List<Block> Blocks { get; private set; }
         public List<BlockGroup> Groups { get; private set; }
         public PlcBlockGroup Parent { get; set; }
@@ -40,7 +41,6 @@ namespace ProjectTreeRenamer.Utility
 
         private void Inititalise(string path)
         {
-           
             if (path == "")
                 _path = Name;
             else
@@ -50,12 +50,13 @@ namespace ProjectTreeRenamer.Utility
             {
                 Blocks.Add(new Block(block));
             }
-            Groups = new List<BlockGroup>();            
+            Groups = new List<BlockGroup>();
             foreach (PlcBlockUserGroup blockGroup in _blockGroup.Groups)
             {
                 Groups.Add(new BlockGroup(blockGroup, _exportPath, _path));
             }
         }
+
         private void SetChangeableState()
         {
             bool changeable = true;
@@ -63,33 +64,36 @@ namespace ProjectTreeRenamer.Utility
             {
                 changeable = changeable & group.IsChangeable;
             }
-
             foreach (Block block in Blocks)
             {
                 changeable = changeable & block.IsChangeable;
-                if(!block.IsChangeable)
+                if (!block.IsChangeable)
                 {
                     Trace.TraceInformation(block.Name + " Block Changeable: " + block.IsChangeable);
                 }
             }
-            
+
             if (changeable)
                 _state = ExitState.IsChangeable;
             else
-                _state = ExitState.CouldNotCompile;            
+                _state = ExitState.CouldNotCompile;
         }
 
         public void RenameAll(string find, string replace)
         {
-            if(Export())
+            if (Export())
             {
-                DeleteBlockGroup();
-                CreateRenamedGroups(find, replace);
-                ImportBlocks(); 
+                //DeleteBlockGroup();
+                //CreateRenamedGroups(find, replace);
+                //ImportBlocks();
+            }
+            else
+            {
+                throw new System.Exception("Failed to Export");
             }
         }
 
-        public bool Export()        
+        public bool Export()
         {
             bool success = true;
             foreach (Block block in Blocks)
@@ -103,7 +107,7 @@ namespace ProjectTreeRenamer.Utility
                 success = success & group.Export();
                 if (success == false)
                     return false;
-            }                
+            }
             return success;
         }
 
@@ -153,32 +157,24 @@ namespace ProjectTreeRenamer.Utility
         internal void Compile()
         {
             _newGroup.GetService<ICompilable>().Compile();
-            //foreach (Block block in Blocks)
-            //{
-            //    block.Compile();
-            //}
-            //foreach (BlockGroup group in Groups)
-            //{
-            //    group.Compile();
-            //}
         }
 
         public void Rename(string find, string replace)
         {
-            foreach(Block block in Blocks)
+            foreach (Block block in Blocks)
             {
                 block.Rename(find, replace);
             }
-            foreach(BlockGroup group in Groups)
+            foreach (BlockGroup group in Groups)
             {
                 group.Rename(find, replace);
             }
-        }               
+        }
 
         internal string GetIschangeableInfo()
         {
             string returnString = "";
-            if(!IsChangeable)
+            if (!IsChangeable)
             {
                 string blockInfoString = GetBlockInfoStrings();
                 if (blockInfoString != "")
@@ -188,10 +184,11 @@ namespace ProjectTreeRenamer.Utility
                     returnString += System.Environment.NewLine + group.GetIschangeableInfo();
                     //if (groupInfoString != "")
                     //    returnString += " --- " + groupInfoString;
-                }                
-            }            
+                }
+            }
             return returnString;
         }
+
         internal string GetBlockInfoStrings()
         {
             string returnString = "";
@@ -203,6 +200,5 @@ namespace ProjectTreeRenamer.Utility
             }
             return returnString;
         }
-
     }
 }

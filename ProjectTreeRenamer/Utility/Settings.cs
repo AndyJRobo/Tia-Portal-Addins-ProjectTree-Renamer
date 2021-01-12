@@ -48,13 +48,14 @@ namespace ProjectTreeRenamer.Utility
                 serializer.Serialize(writeStream, this);
             }
         }
-        
+
         internal void CheckBoxOnClick(MenuSelectionProvider<IEngineeringObject> menuSelectionProvider)
         {
             // TODO: Replace this with your own check box logic
             CheckBox = !CheckBox;
             Save();
         }
+
         internal MenuStatus CheckBoxDisplayStatus(MenuSelectionProvider<IEngineeringObject> menuSelectionProvider, CheckBoxActionItemStyle checkBoxStyle)
         {
             checkBoxStyle.State = CheckBox == true ? CheckBoxState.Checked : CheckBoxState.Unchecked;
@@ -67,18 +68,20 @@ namespace ProjectTreeRenamer.Utility
             RadioButton = 1;
             Save();
         }
+
         internal MenuStatus RadioButton1DisplayStatus(MenuSelectionProvider<IEngineeringObject> menuSelectionProvider, RadioButtonActionItemStyle radioButtonStyle)
         {
             radioButtonStyle.State = RadioButton == 1 ? RadioButtonState.Selected : RadioButtonState.Unselected;
             return MenuStatus.Enabled;
         }
-        
+
         internal void RadioButton2OnClick(MenuSelectionProvider<IEngineeringObject> menuSelectionProvider)
         {
             // TODO: Replace this with your own radio button logic
             RadioButton = 2;
             Save();
         }
+
         internal MenuStatus RadioButton2DisplayStatus(MenuSelectionProvider<IEngineeringObject> menuSelectionProvider, RadioButtonActionItemStyle radioButtonStyle)
         {
             radioButtonStyle.State = RadioButton == 2 ? RadioButtonState.Selected : RadioButtonState.Unselected;
