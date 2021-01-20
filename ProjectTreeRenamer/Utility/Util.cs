@@ -16,6 +16,12 @@ namespace ProjectTreeRenamer.Utility
             return name;
         }
 
+        public static DirectoryInfo CreateUniqueDirectory()
+        {
+            string path = Path.Combine(Environment.ExpandEnvironmentVariables("%TEMP%"), AppDomain.CurrentDomain.FriendlyName, $@"{Guid.NewGuid()}");
+            return Directory.CreateDirectory(path);
+        }
+
         public static bool ExportBlock(PlcBlock block, string filePath)
         {
             try

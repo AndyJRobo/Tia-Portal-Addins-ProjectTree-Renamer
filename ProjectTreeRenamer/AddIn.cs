@@ -64,26 +64,41 @@ namespace ProjectTreeRenamer
 
                     using (var exclusiveAccess = _tiaPortal.ExclusiveAccess("Renaming  folder and contents from: " + _Find + " to: " + _Replace))
                     {
+                        bool TransactionSuccess = false;
                         var project = _tiaPortal.Projects.First();
                         var menuSelection = menuSelectionProvider.GetSelection();
-                        var myUniqueFolderName = $@"{Guid.NewGuid()}";
-                        bool TransactionSuccess = false;
-                        string path = Path.Combine(Environment.ExpandEnvironmentVariables("%TEMP%"), AppDomain.CurrentDomain.FriendlyName, myUniqueFolderName);
-                        Directory.CreateDirectory(path);
+
+                        var exportDirInfo = Util.CreateUniqueDirectory();
+
                         List<BlockGroup> blockGroups = new List<BlockGroup>();
 
-                        using (var transaction = exclusiveAccess.Transaction(project, "Renaming folder and contents from: " + _Find + " to: " + _Replace))
+                        using (var transaction = exclusiveAccess.Transaction(project, "Renaming folders from: " + _Find + " to: " + _Replace))
                         {
                             try
                             {
                                 foreach (PlcBlockUserGroup PlcBlockUserGroup in menuSelection)
-                                    blockGroups.Add(new BlockGroup(PlcBlockUserGroup, myUniqueFolderName));
+                                    blockGroups.Add(new BlockGroup(PlcBlockUserGroup, exportDirInfo));
+
                                 foreach (BlockGroup blockGroup in blockGroups)
-                                    RenameBlockGroup(blockGroup);
+                                    blockGroup.Export(exclusiveAccess);
+
+                                foreach (BlockGroup blockGroup in blockGroups)
+                                    blockGroup.DeleteBlockGroup(exclusiveAccess);
+
+                                foreach (BlockGroup blockGroup in blockGroups)
+                                    blockGroup.CreateRenamedGroups(_Find, _Replace, exclusiveAccess);
+
+                                foreach (BlockGroup blockGroup in blockGroups)
+                                    blockGroup.ImportBlocks(exclusiveAccess);
                             }
                             catch (Exception ex)
                             {
-                                Trace.TraceError("Exception during rename:" + Environment.NewLine + ex + Environment.NewLine + ex.TargetSite);
+                                string failText = "Exception during rename:" + Environment.NewLine + ex + Environment.NewLine + ex.TargetSite;
+                                Trace.TraceError(failText);
+                                using (Form owner = Util.GetForegroundWindow())
+                                {
+                                    MessageBox.Show(owner, failText, "Excpetion Occured Duuring Rename Operation");
+                                }
                                 return;
                             }
                             if (transaction.CanCommit)
@@ -96,18 +111,33 @@ namespace ProjectTreeRenamer
                         {
                             foreach (BlockGroup blockGroup in blockGroups)
                             {
-                                blockGroup.Compile();
-
-                                blockGroup.RefreshGroup();
-                                if (blockGroup.IsChangeable)
+                                blockGroup.Compile(exclusiveAccess);
+                            }
+                            using (var transaction = exclusiveAccess.Transaction(project, "Renaming blocks from: " + _Find + " to: " + _Replace))
+                            {
+                                try
                                 {
-                                    blockGroup.Rename(_Find, _Replace);
+                                    foreach (BlockGroup blockGroup in blockGroups)
+                                    {
+                                        blockGroup.RefreshGroup();
+                                        blockGroup.Rename(_Find, _Replace, exclusiveAccess);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    string failText = "Exception during rename:" + Environment.NewLine + ex + Environment.NewLine + ex.TargetSite;
+                                    Trace.TraceError(failText);
+                                    using (Form owner = Util.GetForegroundWindow())
+                                    {
+                                        MessageBox.Show(owner, failText, "Excpetion Occured Duuring Rename Operation");
+                                    }
+                                    return;
+                                }
+                                if (transaction.CanCommit)
+                                {
+                                    transaction.CommitOnDispose();
                                 }
                             }
-                        }
-                        using (Form owner = Util.GetForegroundWindow())
-                        {
-                            MessageBox.Show(owner, "Completed Renaming");
                         }
                     }
                     TimeSpan ts = stopWatch.Elapsed;
@@ -115,6 +145,10 @@ namespace ProjectTreeRenamer
                           ts.Hours, ts.Minutes, ts.Seconds,
                           ts.Milliseconds / 10);
                     Trace.TraceInformation("RunTime " + elapsedTime);
+                    using (Form owner = Util.GetForegroundWindow())
+                    {
+                        MessageBox.Show(owner, "Completed Renaming in " + elapsedTime);
+                    }
                 }
                 Trace.Close();
             }
@@ -123,20 +157,20 @@ namespace ProjectTreeRenamer
 
         private void RenameBlockGroup(BlockGroup blockGroup)
         {
-            if (blockGroup.IsChangeable)
-            {
-                Trace.TraceInformation("Exporting: " + blockGroup.Name + System.Environment.NewLine);
-                blockGroup.RenameAll(_Find, _Replace);
-            }
-            else
-            {
-                string diagnostics = "The block group " + blockGroup.Name + " has some blocks that were not changeable..." + blockGroup.GetIschangeableInfo();
-                using (Form owner = Util.GetForegroundWindow())
-                {
-                    MessageBox.Show(owner, diagnostics);
-                }
-                Trace.TraceInformation(diagnostics);
-            }
+            //if (blockGroup.IsChangeable)
+            //{
+            //    Trace.TraceInformation("Exporting: " + blockGroup.Name + System.Environment.NewLine);
+            //    blockGroup.RenameAll(_Find, _Replace);
+            //}
+            //else
+            //{
+            //    //string diagnostics = "The block group " + blockGroup.Name + " has some blocks that were not changeable..." + blockGroup.GetIschangeableInfo();
+            //    //using (Form owner = Util.GetForegroundWindow())
+            //    //{
+            //    //    MessageBox.Show(owner, diagnostics);
+            //    //}
+            //    //Trace.TraceInformation(diagnostics);
+            //}
         }
 
         private void RenameAllSelectedPlcBlocks(MenuSelectionProvider menuSelectionProvider)

@@ -11,7 +11,7 @@
 
   <FeatureAssembly>
     <AssemblyInfo>
-      <Assembly>bin\Release\FileRenamer.dll</Assembly>
+      <Assembly>bin\Release\ProjectTreeRenamer.dll</Assembly>
     </AssemblyInfo>
   </FeatureAssembly>
 
