@@ -21,8 +21,6 @@ namespace ProjectTreeRenamer.Utility
 
         public string Name { get; private set; }
 
-        //public bool IsChangeable => _state == ExitState.IsChangeable;
-        //public bool NeedsUpdate { get; set; }
         public PlcBlockGroup Parent { get; set; }
 
         public BlockGroup(PlcBlockUserGroup plcBlockGroup, DirectoryInfo parentDirectory)
@@ -116,65 +114,5 @@ namespace ProjectTreeRenamer.Utility
             foreach (PlcBlockUserGroup blockGroup in _blockGroup.Groups)
                 Groups.Add(new BlockGroup(blockGroup, _exportDirectory));
         }
-
-        //public void RenameAll(string find, string replace)
-        //{
-        //    Export();
-        //    //DeleteBlockGroup();
-        //    //CreateRenamedGroups(find, replace);
-        //    //ImportBlocks();
-        //}
-
-        //private void SetChangeableState()
-        //{
-        //    bool changeable = true;
-        //    foreach (BlockGroup group in Groups)
-        //    {
-        //        changeable = changeable & group.IsChangeable;
-        //    }
-        //    foreach (Block block in Blocks)
-        //    {
-        //        changeable = changeable & block.IsChangeable;
-        //        if (!block.IsChangeable)
-        //        {
-        //            Trace.TraceInformation(block.Name + " Block Changeable: " + block.IsChangeable);
-        //        }
-        //    }
-
-        //    if (changeable)
-        //        _state = ExitState.IsChangeable;
-        //    else
-        //        _state = ExitState.CouldNotCompile;
-        //}
-
-        //internal string GetIschangeableInfo()
-        //{
-        //    string returnString = "";
-        //    if (!IsChangeable)
-        //    {
-        //        string blockInfoString = GetBlockInfoStrings();
-        //        if (blockInfoString != "")
-        //            returnString += _path + blockInfoString;
-        //        foreach (BlockGroup group in Groups)
-        //        {
-        //            returnString += System.Environment.NewLine + group.GetIschangeableInfo();
-        //            //if (groupInfoString != "")
-        //            //    returnString += " --- " + groupInfoString;
-        //        }
-        //    }
-        //    return returnString;
-        //}
-
-        //internal string GetBlockInfoStrings()
-        //{
-        //    string returnString = "";
-        //    foreach (Block block in Blocks)
-        //    {
-        //        string blockInfoString = block.GetIschangeableInfo();
-        //        if (blockInfoString != "")
-        //            returnString += System.Environment.NewLine + "" + blockInfoString;
-        //    }
-        //    return returnString;
-        //}
     }
 }

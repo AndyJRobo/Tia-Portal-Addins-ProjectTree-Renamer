@@ -18,6 +18,7 @@ namespace ProjectTreeRenamer
         private readonly TiaPortal _tiaPortal;
         private readonly Settings _settings;
         private string _Find;
+
         private string _Replace;
         private readonly string _traceFilePath;
 
@@ -153,24 +154,6 @@ namespace ProjectTreeRenamer
                 Trace.Close();
             }
             DeleteEmptyTraceFile();
-        }
-
-        private void RenameBlockGroup(BlockGroup blockGroup)
-        {
-            //if (blockGroup.IsChangeable)
-            //{
-            //    Trace.TraceInformation("Exporting: " + blockGroup.Name + System.Environment.NewLine);
-            //    blockGroup.RenameAll(_Find, _Replace);
-            //}
-            //else
-            //{
-            //    //string diagnostics = "The block group " + blockGroup.Name + " has some blocks that were not changeable..." + blockGroup.GetIschangeableInfo();
-            //    //using (Form owner = Util.GetForegroundWindow())
-            //    //{
-            //    //    MessageBox.Show(owner, diagnostics);
-            //    //}
-            //    //Trace.TraceInformation(diagnostics);
-            //}
         }
 
         private void RenameAllSelectedPlcBlocks(MenuSelectionProvider menuSelectionProvider)
