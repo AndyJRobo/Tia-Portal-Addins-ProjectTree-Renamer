@@ -4,8 +4,8 @@
   <Description>This Addon provides an interface for search and replace renaming in the project tree</Description>
 
   <Product>
-    <Name>File Renamer</Name>
-    <Id>file_renamer</Id>
+    <Name>Project Tree Renamer</Name>
+    <Id>project_tree_renamer</Id>
     <Version>1.0.0</Version>
   </Product>
 
