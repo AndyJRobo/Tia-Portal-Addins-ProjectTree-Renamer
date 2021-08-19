@@ -1,0 +1,12 @@
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Release\ProjectTreeRenamer.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Release\ProjectTreeRenamer.pdb
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.csproj.GenerateResource.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.csproj.CoreCompileInputs.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.pdb
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Release\TiaOpennessHelper.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Release\Siemens.Engineering.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\bin\Release\Siemens.Engineering.xml
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.csproj.CopyComplete
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.csprojAssemblyReference.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\ProjectTreeRenamer\obj\Release\ProjectTreeRenamer.RenameForm.resources

@@ -4,25 +4,22 @@
   <Description>This Addon provides an interface for search and replace renaming in the project tree</Description>
 
   <Product>
-    <Name>File Renamer</Name>
-    <Id>file_renamer</Id>
+    <Name>Project Tree Renamer</Name>
+    <Id>project_tree_renamer</Id>
     <Version>1.0.0</Version>
   </Product>
 
   <FeatureAssembly>
     <AssemblyInfo>
-      <Assembly>bin\Release\FileRenamer.dll</Assembly>
+      <Assembly>bin\Release\ProjectTreeRenamer.dll</Assembly>
     </AssemblyInfo>
   </FeatureAssembly>
 
-  <!--<AdditionalAssemblies>
+  <AdditionalAssemblies>
     <AssemblyInfo>
-      <Assembly>...dll</Assembly>
+      <Assembly>bin\Release\TiaOpennessHelper.dll</Assembly>
     </AssemblyInfo>
-    <AssemblyInfo>
-      <Assembly>...dll</Assembly>
-    </AssemblyInfo>
-  </AdditionalAssemblies>-->
+  </AdditionalAssemblies>
 
   <!--<Certificates>
     <SigningCertificate>...</SigningCertificate>

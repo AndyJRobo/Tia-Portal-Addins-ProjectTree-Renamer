@@ -1,9 +1,7 @@
-﻿using Siemens.Engineering;
-using Siemens.Engineering.SW.Blocks;
-using System;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ProjectTreeRenamer.Utility
@@ -16,22 +14,23 @@ namespace ProjectTreeRenamer.Utility
             return name;
         }
 
-        public static bool ExportBlock(PlcBlock block, string filePath)
+        public static string AdjustXmlStrings(string xmlString)
         {
-            try
-            {
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                }
-                block.Export(new FileInfo(filePath), ExportOptions.None);
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError("Exception during export:" + Environment.NewLine + ex + Environment.NewLine + "Block Name: " + block.Name + Environment.NewLine + " Path: " + filePath);
-                return false;
-            }
-            return true;
+            if (xmlString == null)
+                return "";
+            string ret = Regex.Replace(xmlString, "([&])(?!amp;|gt;|apos;|lt;)", "&amp;");
+            ret = ret.Replace("\"", "&quot;");
+            ret = ret.Replace("'", "&apos;");
+            ret = ret.Replace("<", "&lt;");
+            ret = ret.Replace(">", "&gt;");
+
+            return ret;
+        }
+
+        public static DirectoryInfo CreateUniqueDirectory()
+        {
+            string path = Path.Combine(Environment.ExpandEnvironmentVariables("%TEMP%"), AppDomain.CurrentDomain.FriendlyName, $@"{Guid.NewGuid()}");
+            return Directory.CreateDirectory(path);
         }
 
         internal static Form GetForegroundWindow()

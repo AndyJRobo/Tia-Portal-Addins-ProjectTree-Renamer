@@ -1,0 +1,9 @@
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\bin\Release\TiaOpennessHelper.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\bin\Release\Siemens.Engineering.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\bin\Release\Siemens.Engineering.Hmi.dll
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\bin\Release\Siemens.Engineering.xml
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\bin\Release\Siemens.Engineering.Hmi.xml
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\obj\Release\TiaOpennessHelper.csprojAssemblyReference.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\obj\Release\TiaOpennessHelper.csproj.CoreCompileInputs.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\obj\Release\TiaOpennessHelper.csproj.CopyComplete
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\TiaOpennessHelper\obj\Release\TiaOpennessHelper.dll

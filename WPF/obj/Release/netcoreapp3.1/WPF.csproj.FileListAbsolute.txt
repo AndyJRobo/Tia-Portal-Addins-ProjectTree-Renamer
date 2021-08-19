@@ -1,0 +1,6 @@
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\WPF\obj\Release\netcoreapp3.1\WPF.csprojAssemblyReference.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\WPF\obj\Release\netcoreapp3.1\MainWindow.g.cs
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\WPF\obj\Release\netcoreapp3.1\RenameFormx.g.cs
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\WPF\obj\Release\netcoreapp3.1\App.g.cs
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\WPF\obj\Release\netcoreapp3.1\WPF_MarkupCompile.cache
+C:\Users\robinsona\Documents\GitHub\Tia-Portal-Addins-ProjectTree-Renamer\WPF\obj\Release\netcoreapp3.1\WPF_MarkupCompile.lref
