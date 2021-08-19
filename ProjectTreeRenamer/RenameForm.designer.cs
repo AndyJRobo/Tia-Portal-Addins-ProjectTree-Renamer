@@ -29,12 +29,14 @@ namespace ProjectTreeRenamer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReplace = new System.Windows.Forms.Button();
             this.textBox_Find = new System.Windows.Forms.TextBox();
             this.textBox_Replace = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.TimerShowForm = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +92,11 @@ namespace ProjectTreeRenamer
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // TimerShowForm
+            // 
+            this.TimerShowForm.Interval = 50;
+            this.TimerShowForm.Tick += new System.EventHandler(this.TimerShowForm_Tick);
+            // 
             // RenameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,6 +114,7 @@ namespace ProjectTreeRenamer
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RenameForm";
             this.TopMost = true;
+            this.Shown += new System.EventHandler(this.RenameForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +128,6 @@ namespace ProjectTreeRenamer
         public System.Windows.Forms.TextBox textBox_Find;
         public System.Windows.Forms.TextBox textBox_Replace;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Timer TimerShowForm;
     }
 }

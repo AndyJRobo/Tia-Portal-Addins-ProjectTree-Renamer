@@ -1,9 +1,7 @@
-﻿using Siemens.Engineering;
-using Siemens.Engineering.SW.Blocks;
-using System;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ProjectTreeRenamer.Utility
@@ -14,6 +12,19 @@ namespace ProjectTreeRenamer.Utility
         {
             Path.GetInvalidFileNameChars().ToList().ForEach(c => name = name.Replace(c.ToString(), "_"));
             return name;
+        }
+
+        public static string AdjustXmlStrings(string xmlString)
+        {
+            if (xmlString == null)
+                return "";
+            string ret = Regex.Replace(xmlString, "([&])(?!amp;|gt;|apos;|lt;)", "&amp;");
+            ret = ret.Replace("\"", "&quot;");
+            ret = ret.Replace("'", "&apos;");
+            ret = ret.Replace("<", "&lt;");
+            ret = ret.Replace(">", "&gt;");
+
+            return ret;
         }
 
         public static DirectoryInfo CreateUniqueDirectory()

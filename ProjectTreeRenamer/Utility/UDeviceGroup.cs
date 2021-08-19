@@ -5,7 +5,7 @@ namespace ProjectTreeRenamer.Utility
 {
     public class UDeviceGroup
     {
-        private DeviceUserGroup _deviceUserGroup;
+        private readonly DeviceUserGroup _deviceUserGroup;
         public List<Device> Devices { get; private set; }
         public List<UDeviceGroup> Groups { get; private set; }
 

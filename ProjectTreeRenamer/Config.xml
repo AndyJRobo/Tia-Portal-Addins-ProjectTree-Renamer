@@ -15,14 +15,11 @@
     </AssemblyInfo>
   </FeatureAssembly>
 
-  <!--<AdditionalAssemblies>
+  <AdditionalAssemblies>
     <AssemblyInfo>
-      <Assembly>...dll</Assembly>
+      <Assembly>bin\Release\TiaOpennessHelper.dll</Assembly>
     </AssemblyInfo>
-    <AssemblyInfo>
-      <Assembly>...dll</Assembly>
-    </AssemblyInfo>
-  </AdditionalAssemblies>-->
+  </AdditionalAssemblies>
 
   <!--<Certificates>
     <SigningCertificate>...</SigningCertificate>
